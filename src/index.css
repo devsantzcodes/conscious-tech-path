@@ -48,10 +48,12 @@ All colors MUST be HSL.
     --shadow-soft: 0 4px 20px -2px hsl(180 65% 45% / 0.15);
     --shadow-medium: 0 8px 30px -4px hsl(180 65% 45% / 0.2);
     --shadow-glow: 0 0 40px hsl(180 60% 65% / 0.3);
+    --shadow-elevated: 0 20px 60px -10px hsl(180 65% 45% / 0.25);
 
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .dark {
@@ -93,6 +95,7 @@ All colors MUST be HSL.
     --shadow-soft: 0 4px 20px -2px hsl(180 60% 55% / 0.25);
     --shadow-medium: 0 8px 30px -4px hsl(180 60% 55% / 0.3);
     --shadow-glow: 0 0 40px hsl(180 55% 70% / 0.4);
+    --shadow-elevated: 0 20px 60px -10px hsl(180 60% 55% / 0.35);
   }
 }
 
@@ -144,6 +147,14 @@ All colors MUST be HSL.
     transition: var(--transition-bounce);
   }
 
+  .transition-spring {
+    transition: var(--transition-spring);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out;
   }
@@ -154,6 +165,10 @@ All colors MUST be HSL.
 
   .animate-scale-in {
     animation: scaleIn 0.4s ease-out;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   @keyframes fadeIn {
@@ -185,5 +200,28 @@ All colors MUST be HSL.
       opacity: 1;
       transform: scale(1);
     }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  /* Hover Effects */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .hover-glow:hover {
+    box-shadow: var(--shadow-glow);
   }
 }
